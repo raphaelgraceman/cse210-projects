@@ -11,58 +11,40 @@ class Program
 
         int guess = -1;
         int guessCount = 0;
-
+        string  response = "yes";   
         //looping the user guess
-        while (guess != magicNumber)
+        while (guess != magicNumber && response == "yes")
         {
            if (guessCount != 5)
            {
-             Console.WriteLine("Guess a magic number.");
-            guess = int.Parse(Console.ReadLine());
-            guessCount++ ;
+                Console.WriteLine("Guess a magic number.");
+                guess = int.Parse(Console.ReadLine());
+                guessCount++ ;
 
-            if (magicNumber > guess)
-            {
-                Console.WriteLine("Guess higher");
-            }
-            else if (magicNumber < guess)
-            {
-                Console.WriteLine("Guess lower");
-            }
-            else
-            {
-                Console.WriteLine("You guessed it!");
-            }
+                if (magicNumber > guess)
+                {
+                    Console.WriteLine("Guess higher");
+                }
+                else if (magicNumber < guess)
+                {
+                    Console.WriteLine("Guess lower");
+                }
+                else
+                {
+                    Console.WriteLine("You guessed it!");
+                }
            }
 
            else
            {
-            Console.WriteLine("Game Over");
-            string  response = "yes";
-            if (response == "yes")
-            {
-                Console.WriteLine("Would you like to continue?");
-                response = Console.ReadLine();
-            }
-
-            //continueing
-             Console.WriteLine("Guess a magic number.");
-            guess = int.Parse(Console.ReadLine());
-            guessCount++ ;
-
-            if (magicNumber > guess)
-            {
-                Console.WriteLine("Guess higher");
-            }
-            else if (magicNumber < guess)
-            {
-                Console.WriteLine("Guess lower");
-            }
-            else
-            {
-                Console.WriteLine("You guessed it!");
-            }
-            Console.WriteLine("Game over");
+                Console.WriteLine("Game Over");
+                
+                if (response == "yes")
+                {
+                    Console.WriteLine("Would you like to continue?");
+                    response = Console.ReadLine();
+                    Console.WriteLine("Guess a magic number.");
+                }
            }
         }
     }
