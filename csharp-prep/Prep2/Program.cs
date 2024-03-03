@@ -11,6 +11,7 @@ class Program
         int userGradeScore = int.Parse(gradeScore);
         //ussing letter as a variable to represent grade percent
         string letter = "";
+        string sign = "+";
 
         if (userGradeScore >= 90)
         {
@@ -33,9 +34,6 @@ class Program
         {
             letter = "F";
         }
-        // Display user grade
-        Console.WriteLine($"Your grade is {letter}.");
-
 
         //If pass mark is at least 70, declare a message to congratulate the user
         //or encourage the user to better performance next time
@@ -43,9 +41,22 @@ class Program
         if (userGradeScore == 70 || userGradeScore >= 70)
             {
                 Console.WriteLine("Congratulations! You've passed the test.");
+                if (userGradeScore >= 97)
+                {Console.WriteLine($"Your grade is {letter}-.");}
+                else if (userGradeScore >= 87)
+            {
+                Console.WriteLine($"Your grade is {letter + sign}");
             }
+            else{
+                Console.WriteLine($"Your grade is {letter}-.");
+            }
+            }
+          
         else
         {
+            // Display user grade
+            Console.WriteLine($"Your grade is {letter}.");
+
             Console.WriteLine("Left an inch! You almost pass the test.");
             Console.WriteLine("You could do better next time");
         }
