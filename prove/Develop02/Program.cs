@@ -26,7 +26,7 @@ class Program
             "4. Save to the Journal: ",
             "5. Quit",
             "",
-            "What would you like to do?"
+            "What would you like to do? "
         };
         //while user do no want to Quit the program,
         while (userInput != 5){
