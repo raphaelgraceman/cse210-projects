@@ -1,36 +1,30 @@
-using System;
-using System.Collections.Generic;
-public class Word
-{
-    private string _text;
-    private bool _isHidden;
-    private string _hiddenText;
+public class Word {
+    
+   private string _text;
+   private bool _isHidden;
 
-    public Word(string text)
-    {
+   public Word(string text)
+   {
         _text = text;
         _isHidden = false;
-        foreach(char letter in text)
-        {
-            _hiddenText += "_";
-        }
-    }
+   }
 
-    public string GetText()
-    {
-        // TENARY OPERATOR
-        // CONDITION ? True Expression : False Expression
-        return _isHidden ? _hiddenText : _text;
-    }
+   public void Hide()
+   {
+    _isHidden = true;
+   }
+   public bool IsHidden()
+   {
+    return _isHidden;
+   }
 
-    public bool GetIsHidden()
-    {
-        return _isHidden;
-    }
+   public string GetText()
+   {
+    return _text;
+   }
 
-    public void Hide()
-    {
-        _isHidden = true;
-    }
-
+   public string DisplayWord()
+   {
+      return $"{GetText()}";
+   }
 }

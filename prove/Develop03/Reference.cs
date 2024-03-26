@@ -1,28 +1,74 @@
-using System;
 public class Reference
 {
     private string _book;
     private int _chapter;
-    private int _verse;
-    private int _endVerse;
+    private int _verseStart;
+    private int _verseEnd;
+   
 
-    public Reference(string book, int chapter, int verse)
+    public Reference(string book, int chapter, int verseStart)
+    {
+        SetBook(book);
+        SetChapter(chapter);
+        SetVerse(verseStart);
+        SetVerses(verseStart);
+        
+    }
+    public Reference(string book, int chapter, int verseStart, int verseEnd)
+    {
+        SetBook(book);
+        SetChapter(chapter);
+        SetVerse(verseStart);
+        SetVerses(verseEnd);
+        
+    }
+public void SetBook(string book)
     {
         _book = book;
-        _chapter = chapter;
-        _verse = verse;
     }
-
-    public Reference(string book, int chapter, int verse, int endVerse)
+    public string GetBook()
     {
-        _book = book;
-        _chapter = chapter;
-        _verse = verse;
-        _endVerse = endVerse;
+        return _book;
     }
-
-    public string GetDisplayText()
+    public void SetChapter(int chapter)
     {
-        return _endVerse == 0 ? $"{_book} {_chapter}:{_verse}" :  $"{_book} {_chapter}:{_verse}-{_endVerse}";
+        _chapter = chapter;
     }
+    public int GetChapter()
+    {
+        return _chapter;
+    }
+    public void SetVerse(int verse)
+    {
+        _verseStart = verse;
+    }
+    public int GetVerse()
+    {
+        return _verseStart;
+    }
+    public void SetVerses(int verseEnd)
+    {
+
+        _verseEnd = verseEnd;
+    }
+    public int GetVerses()
+    {
+
+        return _verseEnd;
+    }
+public void DisplayScriptureReference()
+    {
+        if (GetVerse() == GetVerses())
+        {
+            Console.WriteLine($"{GetBook()} {GetChapter()}: {GetVerse()}\n"); 
+           
+        }
+        else
+        {
+            Console.WriteLine($"{GetBook()} {GetChapter()}: {GetVerse()} - {GetVerses()}\n");
+           
+
+        }
+    }
+    
 }
