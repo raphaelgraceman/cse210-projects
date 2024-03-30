@@ -6,10 +6,6 @@ public class Scriptures
     private List<Word> _texts;
     
 
-
-
-
-
     public Scriptures(string book, int chapter, int startVerse, int endVerse, string text) //mult
     {
         _scripture = new Reference(book, chapter, startVerse, endVerse);

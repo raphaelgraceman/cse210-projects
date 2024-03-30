@@ -19,7 +19,7 @@ public class Activity
 
     public void SetActivity(int a)
     {
-if (a == 1)
+    if (a == 1)
         {
             _activityName = "Breathing Activity";
             _description = "This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.\n\nHow long, in seconds, would you like for your session? ";
@@ -31,7 +31,7 @@ if (a == 1)
         }
         if (a == 3)
         {
-_activityName = "Listing Activity";
+        _activityName = "Listing Activity";
             _description = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.\n\nHow long, in seconds, would you like for your session? ";
         }
     }
@@ -40,16 +40,21 @@ _activityName = "Listing Activity";
     {
         _duration = a;
     }
+    
+    //Get the Activity Description 
     public string GetDescription()
     {
         return _description;
     }
-public void DisplayStartingMessage()
+
+    //Display the starting message to the console
+    public void DisplayStartingMessage()
     {
         Console.Clear();
         Console.Write($"Welcome to {GetActivityName()}\n\n{GetDescription()}");
     }
 
+    //Display the ending message to the console
     public void DisplayEndingMessage()
     {
         Console.WriteLine("Well done!!");
@@ -59,15 +64,20 @@ public void DisplayStartingMessage()
         StringSpinner();
 
     }
+
+    //Get the duration of the Activity
     public int GetDuration()
     {
         return _duration;
     }
 
+    //Get the Activity Name
     public string GetActivityName()
     {
         return _activityName;
     }
+    
+    //Run the Activity
     public void RunActivity()
     {
         if (GetActivityName() == "Breathing Activity")
@@ -86,7 +96,8 @@ public void DisplayStartingMessage()
             DisplayEndingMessage();
         }
     }
-//Animation
+    
+    //Animation
     public static void StringSpinner()
     {
         List<string> spinnerString = new()
@@ -111,7 +122,9 @@ public void DisplayStartingMessage()
         }
 
     }
-public static void NumberCountdown()
+    
+    //Count Down Timer Pauser
+    public static void NumberCountdown()
     {
         for (int i = 5; i >= 0; i--)
         {
@@ -120,6 +133,8 @@ public static void NumberCountdown()
             Console.Write("\b \b");
         }
     }
+
+    //Animation to show loading
     public static void DotCountdown(int a)
     {
         for (int i = a; i >= 0; i--)
@@ -129,12 +144,12 @@ public static void NumberCountdown()
         }
     }
 
+    //Timer
     public DateTime StartTime()
     {
         DateTime a = DateTime.Now;
         return a;
     }
     
-   
-    
+     
 }

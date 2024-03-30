@@ -17,9 +17,9 @@ class Program
             Console.Write("Select a choice from the menu: ");
             string stringPrompt = Console.ReadLine();
             
-             if (stringPrompt == ""){
-                stringPrompt = Console.ReadLine();
-             }
+            if (stringPrompt == ""){
+            stringPrompt = Console.ReadLine();
+            }
             int prompt = int.Parse(stringPrompt);
 
             if (prompt == 4)
@@ -37,26 +37,10 @@ class Program
                 
                 Activity specificActivity = new(prompt, duration);
                 specificActivity.RunActivity();
-
+          
             }
-
-
-
-
-
-
-
 
         } while (stopper == true);
     }
-
-
-
-
-
-
-
-
-
-
+  
 }
