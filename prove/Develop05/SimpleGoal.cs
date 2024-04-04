@@ -1,0 +1,21 @@
+class SimpleGoal : Goal
+{
+    public SimpleGoal(List<string> eventDescriptions) : base(eventDescriptions)
+    {
+        foreach (string eventDescription in eventDescriptions)
+        {
+            RecordEvent(eventDescription);
+        }
+    }
+
+    public override void RecordEvent(string eventDescription)
+    {
+        Events.Add(eventDescription);
+    }
+
+    public override int CalculateScore()
+    {
+        // Logic to calculate score for an eternal goal
+        return Score;
+    }
+}

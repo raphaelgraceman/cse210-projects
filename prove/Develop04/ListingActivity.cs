@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Threading; // Added for Thread.Sleep()
 
-// Class ListingActivity
-public class ListingActivity : Activity
+public class ListingActivity : Activity // Assuming Activity is a custom base class
 {
     private List<string> _prompts;
     private List<string> _items;
@@ -30,7 +30,7 @@ public class ListingActivity : Activity
 
         int durationInSeconds = 60; // Default duration of 60 seconds
         ShowSpinner(durationInSeconds);
-        
+
         Console.WriteLine();
         Console.WriteLine($"Number of items listed: {_items.Count}");
         Console.WriteLine();
@@ -44,7 +44,7 @@ public class ListingActivity : Activity
         int index = random.Next(_prompts.Count);
         string prompt = _prompts[index];
         Console.WriteLine(prompt);
-        Console.WriteLine("You have a few seconds to start thinking...");
+        Console.WriteLine("You have a few seconds to start thinking..");
         Thread.Sleep(5000); // Pause for 5 seconds
         Console.WriteLine("Start listing items:");
 
@@ -55,13 +55,11 @@ public class ListingActivity : Activity
     {
         Console.WriteLine("Enter an item (or type 'done' to finish):");
 
-        string input = Console.ReadLine();
-        while (input.ToLower() != "done")
+        string userInput = Console.ReadLine();
+        while (userInput.ToLower() != "done")
         {
-            _items.Add(input);
-            input = Console.ReadLine();
+            _items.Add(userInput);
+            userInput = Console.ReadLine();
         }
     }
 }
-
-

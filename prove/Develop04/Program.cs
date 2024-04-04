@@ -4,8 +4,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        
         bool stopper = true;
+
         do
         {
             Console.Clear();
@@ -15,32 +15,45 @@ class Program
             Console.WriteLine(" 3. Start Listing Activity");
             Console.WriteLine(" 4. Quit");
             Console.Write("Select a choice from the menu: ");
-            string stringPrompt = Console.ReadLine();
-            
-            if (stringPrompt == ""){
-            stringPrompt = Console.ReadLine();
-            }
-            int prompt = int.Parse(stringPrompt);
 
-            if (prompt == 4)
+            string stringPrompt = Console.ReadLine();
+
+            // Remove redundant ReadLine()
+            if (stringPrompt == "")
+            {
+                continue; // Continue the loop if user input is empty
+            }
+
+            // Parse user input
+            int selectedOption;
+            if (!int.TryParse(stringPrompt, out selectedOption))
+            {
+                Console.WriteLine("Invalid input. Please enter a number.");
+                continue; // Continue the loop if parsing fails
+            }
+
+            if (selectedOption == 4)
             {
                 stopper = false;
             }
-
             else
             {
-                Activity activity = new(prompt);
+                Activity activity = new Activity(selectedOption);
                 activity.DisplayStartingMessage();
 
+                // Get duration input
+                Console.Write("Enter duration (in seconds): ");
                 string durationString = Console.ReadLine();
-                int duration = int.Parse(durationString);
-                
-                Activity specificActivity = new(prompt, duration);
-                specificActivity.RunActivity();
-          
-            }
+                int duration;
+                if (!int.TryParse(durationString, out duration))
+                {
+                    Console.WriteLine("Invalid input. Please enter a valid integer for duration.");
+                    continue; // Continue the loop if parsing fails
+                }
 
-        } while (stopper == true);
+                Activity specificActivity = new Activity(selectedOption, duration);
+                specificActivity.RunActivity();
+            }
+        } while (stopper);
     }
-  
 }
