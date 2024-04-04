@@ -2,9 +2,6 @@ using System;
 
 abstract class Goal
 {
-   
-
-
     public string Title { get; set; }
     public int Score { get; set; }
 
