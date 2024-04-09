@@ -1,21 +1,54 @@
-class SimpleGoal : Goal
+using System;
+namespace Eternal_Quest
 {
-    public SimpleGoal(List<string> eventDescriptions) : base(eventDescriptions)
+    public class SimpleGoal : Goal
     {
-        foreach (string eventDescription in eventDescriptions)
+    
+        
+        public SimpleGoal(string name, string description, int points, bool status) : base(name, description, points, status)
         {
-            RecordEvent(eventDescription);
+        
         }
-    }
 
-    public override void RecordEvent(string eventDescription)
-    {
-        Events.Add(eventDescription);
-    }
+        public override int RecordEvent()
+        {
+            int points = 0;
 
-    public override int CalculateScore()
-    {
-        // Logic to calculate score for an eternal goal
-        return Score;
+            Console.WriteLine($"Congratulations! You have earned {GetPoints()} points!\n");
+            points = GetPoints();
+            SetStatus(IsComplete());
+
+            return points;
+            
+
+        }
+
+        public override string Complete()
+        {
+
+            string sign = "X";
+            return sign;
+        }
+        public override bool IsComplete()
+        {
+            bool isComplete = GetStatus();
+            isComplete = true;
+            return isComplete;
+        }
+        
+            
+            
+
+        
+
+        public override string TempString()
+        {
+            string represent = $"{GetName()} ({GetDescription()})";
+            return represent;
+        }
+        public override string GetStringPresentation()
+        {
+            return $"Simple Goal||{GetName()}||{GetDescription()}||{GetPoints()}||{GetStatus()}";
+        }
     }
 }

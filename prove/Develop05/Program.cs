@@ -1,64 +1,72 @@
 using System;
-
-class Program
-{
-    static void Main()
+using System.IO;
+namespace  Eternal_Quest
+{     
+    class Program
     {
-        List<string> events = new List<string> {};
-
-        SimpleGoal simpleGoal = new SimpleGoal(events);
-        EternalGoal eternalGoal = new EternalGoal(events);
-        ChecklistGoal checklistGoal = new ChecklistGoal(events);    
-
-        GoalManager goalManager = new GoalManager();
-        
-        bool running = true;
-
-        while (running)
+        static void Main(string[] args)
         {
-            Console.WriteLine("Menu:");
-            Console.WriteLine("1. Create a new goal");
-            Console.WriteLine("2. Record events");
-            Console.WriteLine("3. List goals");
-            Console.WriteLine("4. Load goals");
-            Console.WriteLine("5. Save goals");
-            Console.WriteLine("6. Exit");
-            Console.Write("Enter your choice: ");
-            int choice = Convert.ToInt32(Console.ReadLine());
+            bool quit = true;
+            
+            GoalManager goalManager = new();
 
-            switch (choice)
+            do
             {
-                case 1:
-                    goalManager.CreateNewGoal();
-                    break;
+                
+                goalManager.DisplayLevel();
 
-                case 2:
-                    // Record an event
-                    goalManager.RecordEvent();
-                    break;
-                case 3:
-                    // Display goals
-                    goalManager.ListGoals();
-                    break;
-               
-                case 4:
-                    // Load goals and scores
-                    goalManager.LoadGoal();
-                    break;
-                case 5:
-                    // Save goals and scores
-                    goalManager.SaveData();
-                    break;
-                case 6:
-                    // Exit
-                    running = false;
-                    break;
-                default:
-                    Console.WriteLine("Invalid choice. Please try again.");
-                    break;
-            }
+                goalManager.DisplayMenu();
+                string prompt = Console.ReadLine();
+                int intPrompt = int.Parse(prompt);
+
+
+
+                if (intPrompt == 1)
+                {
+                    goalManager.GoalType();
+                    string goalPrompt = Console.ReadLine();
+                    int intGoalPrompt = int.Parse(goalPrompt);
+
+                    goalManager.CreateGoal(intGoalPrompt);
+
+
+                }
+
+                if (intPrompt == 2)
+                {   
+                    goalManager.DisplayGoals();
+                }
+
+                if (intPrompt == 3)
+                {
+                    goalManager.SaveToFile();
+                }
+
+                if (intPrompt == 4)
+                {
+                    goalManager.LoadFile();
+                }
+
+                if (intPrompt == 5)
+                {
+                    goalManager.RecordEvents();
+
+                }
+
+                if (intPrompt == 6)
+                {
+                    quit = false;
+                }
+
+                if (intPrompt>6||intPrompt<0)
+                {
+                    Console.WriteLine("\nIncorrect Prompt");
+                }
+
+            } while (quit == true);
+
         }
-
-        Console.WriteLine("Program exited. Thank you for using the Eternal Quest program.");
+    
+    
     }
 }

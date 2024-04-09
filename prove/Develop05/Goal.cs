@@ -1,43 +1,77 @@
-using System;
-
-abstract class Goal
+using System.IO;
+namespace Eternal_Quest
 {
-    public string Title { get; set; }
-    public int Score { get; set; }
-
-    public List<string> Events { get; }
-
-    public Goal(List<string> eventDescriptions)
+    public class Goal
     {
-        Events = new List<string>(eventDescriptions);
-    }
-
-    public virtual void RecordEvent(string eventDescription)
-    {
-        Events.Add(eventDescription);
-    }
-
-      public void DisplayEvents()
-    {
-        Console.WriteLine($"Events for goal '{Title}':");
-        foreach (string ev in Events)
-        {
-            Console.WriteLine(ev);
-        }
-    }
-    public abstract int CalculateScore();
-
-    public override string ToString()
-    {
-        return $"Title: {Title}, Score: {Score}";
-    }
+        private string _name;
+        private string _description;
     
-    public virtual void DisplayGoalStatus()
-    {
-        string completionStatus = IsComplete ? "[X]" : "[ ]";
-        Console.WriteLine($"{completionStatus} {Name}");
+        private bool _status = false;
+        private int _points;
+
+        public Goal(string name, string description, int points,bool status)
+        {
+            _name = name;
+            _description = description;
+            _points = points;
+            _status = status;
+        }
+
+        public virtual int RecordEvent()
+        {
+            int recordPoints = 0;
+            return recordPoints;
+        }
+        public virtual string Complete()
+        {   
+
+            string sign = "";
+            return sign;
+        }
+        public virtual bool IsComplete()
+        {   
+            bool status = GetStatus();
+            return status;
+        }
+
+        public bool GetStatus()
+        {
+            return _status;
+
+        }
+
+        public void SetStatus(bool status)
+        {
+            _status = status;
+        }
+    
+        
+        
+        public int GetPoints()
+        {
+            return _points;
+        }
+
+        public string GetName()
+        {
+            return _name;
+        }
+
+        public string GetDescription()
+        {
+            return _description;
+        }
+        
+
+        public virtual string TempString()
+        {
+            return "";
+        }
+
+        public virtual string GetStringPresentation()
+        {
+            return "";
+        }
+    
     }
 }
-
-
-
