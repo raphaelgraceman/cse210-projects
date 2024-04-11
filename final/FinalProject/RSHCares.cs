@@ -9,11 +9,11 @@ namespace FinalProject
         private string _description;
         private string _count;
 
-        public RSHCare(string name, string description, string count)
+        public RSHCare(string namecaseTitle, string descriptionCase, string counts)
         {
-            _name = name;
-            _description = description;
-            _count = count;
+            _name = namecaseTitle;
+            _description = descriptionCase;
+            _count = counts;
         }
 
         public virtual void RecordEvent()
@@ -82,6 +82,51 @@ namespace FinalProject
             }
             Console.WriteLine("Failed to load RSHCare from file: " + fileName);
             return null;
+        }
+    }
+}
+
+
+//This is a child class below
+using System;
+
+namespace FinalProject
+{
+    public class FeedingCare : RSHCare
+    {
+        public FeedingCare(string name, string description, int counts, bool status) : base(name, description, points, status)
+        {
+        }
+
+        public override int DischargeCase()
+        {
+            int points = GetPoints();
+            Console.WriteLine($"Congratulations! You have earned {counts} points!\n");
+            return points;
+        }
+
+        public override string Complete()
+        {
+            return "X";
+        }
+
+        public override bool IsDischarged()
+        {
+            return true;
+        }
+        public override int LevelCompleted()
+        {
+            return true;
+        }
+
+        public override string TempString()
+        {
+            return $"{GetName()} ({GetDescription()})";
+        }
+
+        public override string GetStringPresentation()
+        {
+            return $"FeedingCare||{GetName()}||{GetDescription()}||{GetPoints()}||{GetStatus()}";
         }
     }
 }
